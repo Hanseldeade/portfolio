@@ -95,7 +95,7 @@ const IntroAnimation = () => {
           className="text-center z-10"
         >
           <h1 className="text-4xl font-bold text-white tracking-wider">
-            JA<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">IKA</span>
+            Jaika<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500"> Sangual</span>
           </h1>
         </motion.div>
       </div>
