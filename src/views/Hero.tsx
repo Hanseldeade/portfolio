@@ -1,7 +1,27 @@
 import WordRotate from "../components/WordRotate";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [windowSize, setWindowSize] = useState({ width: 1000, height: 800 });
+
+  useEffect(() => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const navList = [
     {
       title: "About",
@@ -23,8 +43,34 @@ const Hero = () => {
 
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-3xl animate-pulse top-0 -left-64"></div>
-        <div className="absolute w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl animate-pulse bottom-0 right-0"></div>
+        <div className="absolute w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-3xl animate-pulse top-0 -left-64 mix-blend-screen"></div>
+        <div className="absolute w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl animate-pulse bottom-0 right-0 mix-blend-screen"></div>
+        <div className="absolute w-[300px] h-[300px] bg-pink-500/20 rounded-full blur-2xl animate-pulse top-1/2 left-1/2 mix-blend-screen"></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              initial={{
+                x: Math.random() * windowSize.width,
+                y: Math.random() * windowSize.height,
+                opacity: Math.random() * 0.5 + 0.3,
+                scale: Math.random() * 0.5 + 0.5,
+              }}
+              animate={{
+                y: [0, Math.random() * -50, 0],
+                x: [0, Math.random() * 50 - 25, 0],
+              }}
+              transition={{
+                duration: Math.random() * 3 + 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="max-w-[1500px] mx-auto w-full flex md:flex-row flex-col relative z-10">
@@ -47,7 +93,12 @@ const Hero = () => {
               >
                 <li className="relative group">
                   <span className="relative z-10">{items.title}</span>
-                  <span className="absolute inset-0 bg-white/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-200"></span>
+                  <motion.span 
+                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg"
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileHover={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
                 </li>
               </motion.a>
             ))}
@@ -62,7 +113,18 @@ const Hero = () => {
               className="lg:text-9xl sm:text-7xl text-6xl font-semibold relative"
             >
               JAIKA
-              <div className="absolute -inset-1 bg-white/5 rounded-lg blur-sm"></div>
+              <motion.div 
+                className="absolute -inset-1 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg blur-sm"
+                animate={{ 
+                  scale: [1, 1.02, 1],
+                  opacity: [0.5, 0.7, 0.5]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
             </motion.h1>
             <div className="absolute -left-[45rem] top-1/2 -translate-y-1/2">
               <WordRotate
@@ -90,7 +152,18 @@ const Hero = () => {
                 className="sm:text-7xl lg:text-9xl text-6xl font-semibold relative"
               >
                 SANGUAL
-                <div className="absolute -inset-1 bg-white/5 rounded-lg blur-sm"></div>
+                <motion.div 
+                  className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg blur-sm"
+                  animate={{ 
+                    scale: [1, 1.02, 1],
+                    opacity: [0.5, 0.7, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
               </motion.h1>
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -98,9 +171,20 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="m-4 ml-6 relative group"
               >
-                <p className="transition-transform duration-200 group-hover:translate-x-1">Business</p>
-                <p className="transition-transform duration-200 group-hover:translate-x-1">Analyst</p>
-                <div className="absolute -inset-2 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-200"></div>
+                <motion.div
+                  className="relative z-10"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <p className="relative z-10">Business</p>
+                  <p className="relative z-10">Analyst</p>
+                </motion.div>
+                <motion.div 
+                  className="absolute -inset-2 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileHover={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
               </motion.div>
             </div>
           </div>
