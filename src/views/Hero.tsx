@@ -1,9 +1,15 @@
 import WordRotate from "../components/WordRotate";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [windowSize, setWindowSize] = useState({ width: 1000, height: 800 });
+  const { scrollY } = useScroll();
+  
+  // Create parallax effect values
+  const imageY = useTransform(scrollY, [0, 500], [0, -150]);
+  const textY = useTransform(scrollY, [0, 500], [0, -50]);
+  const fadeOut = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
     setWindowSize({
@@ -193,30 +199,36 @@ const Hero = () => {
             ))}
           </motion.ul>
 
-          {/* Hero Images - Now positioned below WordRotate */}
+          {/* Hero Images - Now with parallax effect */}
           <div className="relative mt-48 ml-32">
             <motion.div 
-              className="relative"
+              className="relative w-fit overflow-hidden group"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              style={{ y: imageY }}
+              whileHover={{ scale: 1.02 }}
             >
               <img 
                 src="/Hero/Hero 1.png" 
                 alt="Hero Image 1" 
-                className="w-full max-w-md rounded-lg shadow-lg"
+                className="w-full max-w-md rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
+              />
+              <motion.div
+                className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"
               />
             </motion.div>
           </div>
         </div>
 
         <div className="sm:w-full w-fit mx-auto sm:mx-0 md:w-1/2">
-          <div className="ml-auto w-fit relative">
+          <div className="ml-auto w-fit relative mt-8">
             <motion.h1 
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="lg:text-9xl sm:text-7xl text-6xl font-semibold relative"
+              style={{ y: textY, opacity: fadeOut }}
             >
               JAIKA
               <motion.div 
@@ -294,12 +306,13 @@ const Hero = () => {
               </motion.div>
             </div>
             
-            {/* Bio text */}
+            {/* Bio text with parallax */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
               className="mt-24 max-w-3xl text-gray-300 text-lg leading-relaxed relative z-10 mx-auto text-justify"
+              style={{ y: textY, opacity: fadeOut }}
             >
               <p>
                 I'm a BS Information Systems student specializing in Business Analytics at the University of Santo Tomas. As a passionate and versatile UI/UX Designer, Analyst, and Full-Stack Developer, I thrive in creating visually appealing, intuitive designs and developing user-centric web applications. Beyond coding and design, I also express my creativity through digital artworks, including pubmats, illustrations, and graphic design pieces—bringing both technical and artistic perspectives into every project I take on.
@@ -308,6 +321,57 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1 }}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="flex flex-col items-center"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+        >
+          <span className="text-sm text-gray-400 mb-2">Scroll Down</span>
+          <motion.div
+            animate={{ 
+              boxShadow: [
+                "0 0 10px rgba(168, 85, 247, 0.4)", 
+                "0 0 20px rgba(168, 85, 247, 0.6)", 
+                "0 0 10px rgba(168, 85, 247, 0.4)"
+              ]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-purple-500"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-5 w-5 text-purple-500"
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
