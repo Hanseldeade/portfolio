@@ -163,12 +163,12 @@ const Hero = () => {
       </div>
 
       <div className="max-w-[1500px] mx-auto w-full flex md:flex-row flex-col relative z-10">
-        <div className="w-full">
+        <div className="w-full md:w-1/2 flex flex-col">
           <motion.ul 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex gap-10 w-fit sm:mx-0 mx-auto"
+            className="flex gap-10 w-fit sm:mx-0 mx-auto mb-8"
           >
             {navList.map((items, index) => (
               <motion.a 
@@ -192,8 +192,25 @@ const Hero = () => {
               </motion.a>
             ))}
           </motion.ul>
+
+          {/* Hero Images - Now positioned below WordRotate */}
+          <div className="relative mt-48 ml-32">
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <img 
+                src="/Hero/Hero 1.png" 
+                alt="Hero Image 1" 
+                className="w-full max-w-md rounded-lg shadow-lg"
+              />
+            </motion.div>
+          </div>
         </div>
-        <div className="sm:w-full w-fit mx-auto sm:mx-0">
+
+        <div className="sm:w-full w-fit mx-auto sm:mx-0 md:w-1/2">
           <div className="ml-auto w-fit relative">
             <motion.h1 
               initial={{ opacity: 0, x: 100 }}
@@ -215,7 +232,7 @@ const Hero = () => {
                 }}
               />
             </motion.h1>
-            <div className="absolute -left-[45rem] top-1/2 -translate-y-1/2">
+            <div className="absolute -left-[42rem] top-1/4 -translate-y-1/2 z-20">
               <WordRotate
                 className="text-4xl font-semibold text-black dark:text-white sm:text-5xl md:text-7xl whitespace-nowrap"
                 words={[
@@ -276,6 +293,18 @@ const Hero = () => {
                 />
               </motion.div>
             </div>
+            
+            {/* Bio text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="mt-24 max-w-3xl text-gray-300 text-lg leading-relaxed relative z-10 mx-auto text-justify"
+            >
+              <p>
+                I'm a BS Information Systems student specializing in Business Analytics at the University of Santo Tomas. As a passionate and versatile UI/UX Designer, Analyst, and Full-Stack Developer, I thrive in creating visually appealing, intuitive designs and developing user-centric web applications. Beyond coding and design, I also express my creativity through digital artworks, including pubmats, illustrations, and graphic design pieces—bringing both technical and artistic perspectives into every project I take on.
+              </p>
+            </motion.div>
           </div>
         </div>
       </div>
