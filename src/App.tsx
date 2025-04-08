@@ -1,10 +1,9 @@
 import About from "./views/About";
 import Contact from "./views/Contact";
-import Gallery from "./views/Gallery";
+import Project from "./views/Project";
 import Hero from "./views/Hero";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import myBackground from "../videos/fixed.mp4";
 
 const App = () => {
   const [loaded, setLoaded] = useState(false);
@@ -17,18 +16,6 @@ const App = () => {
 
   return (
     <div className="w-full h-auto bg-black text-white">
-      <motion.video
-        initial={{ opacity: 0 }}
-        animate={loaded && { opacity: 0.3 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        playsInline
-        muted
-        loop
-        autoPlay
-        preload="auto"
-        src={myBackground}
-        className="absolute top-0 right-0 w-full h-screen object-cover opacity-30"
-      />
       <AnimatePresence mode="wait">
         {!loaded ? (
           <motion.div
@@ -37,38 +24,6 @@ const App = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <motion.img
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 100, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 0.77, 0.47, 0.97] }}
-              src="/hero/Ink1.webp"
-              alt=""
-              className="absolute invert top-0 md:w-auto w-[10rem]"
-            />
-            <motion.img
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 100, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 0.77, 0.47, 0.97] }}
-              src="/hero/Ink2.webp"
-              alt=""
-              className="absolute invert bottom-0 left-0 md:w-auto w-[10rem]"
-            />
-            <motion.img
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 100, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 0.77, 0.47, 0.97] }}
-              src="/hero/Ink3.webp"
-              alt=""
-              className="absolute invert bottom-0 right-0 md:w-auto w-[10rem]"
-            />
-            <motion.img
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 100, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 0.77, 0.47, 0.97] }}
-              src="/hero/Ink4.webp"
-              alt=""
-              className="absolute invert top-0 right-0 md:w-[20rem] w-[10rem]"
-            />
             <svg
               className="md:w-[40rem] w-[20rem]"
               viewBox="0 0 748 118"
@@ -109,13 +64,8 @@ const App = () => {
           >
             <Hero />
             <div className="relative">
-              <img
-                src="/background.webp"
-                alt="background"
-                className="w-full h-full absolute top-0 left-0 opacity-10 object-cover object-top"
-              />
               <About />
-              <Gallery />
+              <Project />
             </div>
 
             <Contact />

@@ -1,18 +1,6 @@
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { settings } from "../static";
-
 const About = () => {
-  const [ref, inView] = useInView(settings);
-
   return (
     <section className="w-full h-fit px-5 py-10 sm:pb-[10rem] font-secondary relative" id="about">
-      <img
-        src="/hero/Ink3.webp"
-        alt="Ink3"
-        className="absolute bottom-0 left-0 z-10 translate-y-1/2 sm:w-auto w-44 invert"
-      />
-
       <div className="max-w-[1400px] mx-auto w-full mt-10 relative z-10">
         <div className="flex gap-5">
           <h1 className="text-5xl font-semibold">ABOUT</h1>
@@ -40,32 +28,11 @@ const About = () => {
         </p>
 
         <div className="mt-8 flex gap-8 md:flex-row flex-col">
-          <motion.div
-            initial={{ y: 150, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 100 }}
-            transition={{
-              duration: 1.5,
-              ease: [0.16, 0.77, 0.47, 0.97],
-            }}
-            viewport={{
-              margin: `${window.innerHeight}px 0px  0px 0px`,
-              amount: 0.5,
-            }}
-            className="md:w-[90rem] relative overflow-hidden"
-            ref={ref}
-          >
-            <motion.img
-              initial={{ scale: 1.5 }}
-              animate={inView ? { scale: 1 } : {}}
-              transition={{
-                duration: 1.5,
-                ease: [0.16, 0.77, 0.47, 0.97],
-              }}
-              src="/About.webp"
-              alt="About"
-              className="w-full h-full object-cover border"
-            />
-          </motion.div>
+          <div className="md:w-[90rem] relative overflow-hidden">
+            <div className="w-full h-[300px] bg-gray-800 border flex items-center justify-center">
+              <p className="text-gray-400">Image placeholder</p>
+            </div>
+          </div>
           <div className="">
             <p className="font-medium leading-[1.7rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -76,15 +43,8 @@ const About = () => {
               nulla pariatur.
             </p>
             <a href="#contact" className="">
-              <button className="mt-10 relative transition-all ease-in-out duration-300 hover:scale-[1.1]">
-                <img
-                  src="/button.webp"
-                  alt="Button"
-                  className="select-none w-44 invert"
-                />
-                <p className="absolute text-black z-10 top-0 left-0 right-0 bottom-0 m-auto h-fit ">
-                  Contact Me
-                </p>
+              <button className="mt-10 relative transition-all ease-in-out duration-300 hover:scale-[1.1] bg-white text-black px-6 py-2 rounded">
+                Contact Me
               </button>
             </a>
           </div>

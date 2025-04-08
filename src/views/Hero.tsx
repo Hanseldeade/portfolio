@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import WordRotate from "../components/WordRotate";
 
 const Hero = () => {
   const navList = [
@@ -7,8 +7,8 @@ const Hero = () => {
       link: "about",
     },
     {
-      title: "Gallery",
-      link: "gallery",
+      title: "Projects",
+      link: "projects",
     },
     {
       title: "Contact",
@@ -29,6 +29,24 @@ const Hero = () => {
               </a>
             ))}
           </ul>
+          <div className="mt-4">
+            <WordRotate
+              className="text-xl font-semibold text-black dark:text-white sm:text-2xl md:text-4xl"
+              words={[
+                "Hello I'm",
+                "Hola, soy",
+                "Bonjour, je suis",
+                "Hallo, ich bin",
+                "Ciao, sono",
+                "Olá, eu sou",
+                "你好, 我是",
+                "こんにちは、私は",
+                "안녕하세요, 저는",
+                "Привет, я",
+                "مرحبًا، أنا",
+              ]}
+            />
+          </div>
         </div>
         <div className="sm:w-full w-fit mx-auto sm:mx-0">
           <div className="ml-auto w-fit">

@@ -6,34 +6,6 @@ const Contact = () => {
     >
       <h1 className="font-bold text-5xl">Are you interested?</h1>
       <h1 className="">Reach me through:</h1>
-
-      <div className="mt-10 flex gap-6 justify-center md:flex-row flex-col">
-        <a
-          href="https://www.instagram.com/jaikasangual/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className=""
-        >
-          <button className="relative transition-all ease-in-out duration-300 hover:scale-[1.1] bg-white text-black px-6 py-2 rounded">
-            Instagram
-          </button>
-        </a>
-
-        <a
-          href="https://api.whatsapp.com/send/?phone=5521977236909&text&type=phone_number&app_absent=0"
-          target="_blank"
-          rel="noopener noreferrer"
-          className=""
-        >
-          <button className="relative transition-all ease-in-out duration-300 hover:scale-[1.1] bg-white text-black px-6 py-2 rounded">
-            WhatsApp
-          </button>
-        </a>
-
-        <button className="relative transition-all ease-in-out duration-300 hover:scale-[1.1] bg-white text-black px-6 py-2 rounded">
-          +55 21 97723-6909
-        </button>
-      </div>
     </footer>
   );
 };
