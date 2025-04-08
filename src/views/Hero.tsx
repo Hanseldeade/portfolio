@@ -29,30 +29,30 @@ const Hero = () => {
               </a>
             ))}
           </ul>
-          <div className="mt-4">
-            <WordRotate
-              className="text-xl font-semibold text-black dark:text-white sm:text-2xl md:text-4xl"
-              words={[
-                "Hello I'm",
-                "Hola, soy",
-                "Bonjour, je suis",
-                "Hallo, ich bin",
-                "Ciao, sono",
-                "Olá, eu sou",
-                "你好, 我是",
-                "こんにちは、私は",
-                "안녕하세요, 저는",
-                "Привет, я",
-                "مرحبًا، أنا",
-              ]}
-            />
-          </div>
         </div>
         <div className="sm:w-full w-fit mx-auto sm:mx-0">
-          <div className="ml-auto w-fit">
+          <div className="ml-auto w-fit relative">
             <h1 className="lg:text-9xl sm:text-7xl text-6xl font-semibold">
               JAIKA
             </h1>
+            <div className="absolute -left-[32rem] top-1/2 -translate-y-1/2">
+              <WordRotate
+                className="text-4xl font-semibold text-black dark:text-white sm:text-5xl md:text-7xl whitespace-nowrap"
+                words={[
+                  "Hello I'm",
+                  "Hola, soy",
+                  "Bonjour, je suis",
+                  "Hallo, ich bin",
+                  "Ciao, sono",
+                  "Olá, eu sou",
+                  "你好, 我是",
+                  "こんにちは、私は",
+                  "안녕하세요, 저는",
+                  "Привет, я",
+                  "مرحبًا، أنا",
+                ]}
+              />
+            </div>
             <div className="flex">
               <h1 className="sm:text-7xl lg:text-9xl text-6xl font-semibold">
                 SANGUAL

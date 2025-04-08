@@ -12,7 +12,7 @@ const WordRotate = ({ words, className = "" }: WordRotateProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [words.length]);
