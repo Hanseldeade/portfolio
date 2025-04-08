@@ -1,6 +1,26 @@
+import MarqueeComponent from "@/components/magicui/marqueeComponent";
+import ShineBorder from "@/components/magicui/shine-border";
+
 const Gallery = () => {
+  const projects = {
+    tech: [
+      {
+        title: "CICS Faculty C-DocS",
+        description: "Course Document Submission System for Centralized Review and Approval Process of Course Plans, Weekly Class Expectations, Test Questionnaires, and Table of Specifications",
+        technologies: ["Vite", "Firebase", "Vercel"],
+        liveUrl: "https://example.com",
+        githubUrl: "https://github.com/example",
+        image: "/projects/Tech/Cdocs.png"
+      },
+      // Add more tech projects here
+    ],
+    arts: [
+      // Add arts projects here when ready
+    ]
+  };
+
   return (
-    <section className="w-full min-h-screen px-5 py-10 font-secondary relative" id="gallery">
+    <section className="w-full min-h-screen px-5 py-10 font-secondary relative bg-[#020817]" id="gallery">
       <div className="max-w-[1400px] mx-auto w-full mt-10">
         <div className="flex gap-5">
           <h1 className="text-5xl font-semibold">Projects</h1>
@@ -19,8 +39,79 @@ const Gallery = () => {
           </svg>
         </div>
 
-        <div className="w-full mt-5 text-center">
-          <p className="text-xl">Projects coming soon...</p>
+        <div className="flex flex-col gap-16 mt-10">
+          {/* Tech Projects Section */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-semibold mb-6">Tech</h2>
+            <div className="flex justify-center">
+              {projects.tech.map((project, index) => (
+                <div key={index} className="w-full max-w-2xl">
+                  <ShineBorder
+                    borderRadius={12}
+                    borderWidth={2}
+                    duration={8}
+                    color={["#3b82f6", "#06b6d4"]}
+                  >
+                    <div className="bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 w-full">
+                      <div className="relative w-full h-48">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
+                        <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.map((tech, techIndex) => (
+                            <span key={techIndex} className="px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex gap-4">
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-white flex items-center gap-2"
+                          >
+                            <span>live website</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-white flex items-center gap-2"
+                          >
+                            <span>github repo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </ShineBorder>
+                </div>
+              ))}
+              {projects.tech.length === 0 && (
+                <p className="text-gray-400">Tech projects coming soon...</p>
+              )}
+            </div>
+          </div>
+
+          {/* Arts & Design Projects Section */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-semibold mb-6">Arts & Design</h2>
+
+            <MarqueeComponent />
+            
+          </div>
         </div>
       </div>
     </section>
