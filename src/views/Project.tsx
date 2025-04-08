@@ -20,7 +20,7 @@ const Gallery = () => {
   };
 
   return (
-    <section className="w-full min-h-screen px-5 py-10 font-secondary relative bg-[#020817]" id="gallery">
+    <section className="w-full min-h-screen px-5 py-10 font-secondary relative bg-[#020817]" id="projects">
       <div className="max-w-[1400px] mx-auto w-full mt-10">
         <div className="flex gap-5">
           <h1 className="text-5xl font-semibold">Projects</h1>
