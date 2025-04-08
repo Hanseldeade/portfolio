@@ -1,14 +1,8 @@
 import React from "react";
-import GalleryImage from "../components/GalleryImage";
 
 const Gallery = () => {
   return (
     <section className="w-full min-h-screen px-5 py-10 font-secondary relative" id="gallery">
-      <img
-        src="/hero/Ink4.webp"
-        alt="Ink"
-        className="absolute bottom-0 right-0 z-10 w-[20rem] invert sm:block hidden"
-      />
       <div className="max-w-[1400px] mx-auto w-full mt-10">
         <div className="flex gap-5">
           <h1 className="text-5xl font-semibold">GALLERY</h1>
@@ -27,28 +21,8 @@ const Gallery = () => {
           </svg>
         </div>
 
-        <div className="w-full mt-5 flex gap-5">
-          <div className="flex flex-col gap-5">
-            {[...new Array(3)].map((_, i) => (
-              <React.Fragment key={i}>
-                <GalleryImage i={i + 1} />
-              </React.Fragment>
-            ))}
-          </div>
-          <div className="flex flex-col gap-5">
-            {[...new Array(3)].map((_, i) => (
-              <React.Fragment key={i}>
-                <GalleryImage i={i + 4} />
-              </React.Fragment>
-            ))}
-          </div>
-          <div className="flex flex-col gap-5">
-            {[...new Array(3)].map((_, i) => (
-              <React.Fragment key={i}>
-                <GalleryImage i={i + 7} />
-              </React.Fragment>
-            ))}
-          </div>
+        <div className="w-full mt-5 text-center">
+          <p className="text-xl">Gallery coming soon...</p>
         </div>
       </div>
     </section>
