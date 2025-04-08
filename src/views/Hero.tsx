@@ -43,6 +43,95 @@ const Hero = () => {
 
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0">
+        {/* Tech Grid Background */}
+        <div className="absolute inset-0">
+          {/* Base grid */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(147, 51, 234, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px'
+            }}
+          />
+          
+          {/* Animated grid lines */}
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={`horizontal-${i}`}
+              className="absolute h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent"
+              style={{
+                top: `${(i * 100) / 15}%`,
+                left: '0',
+                right: '0',
+                width: '100%'
+              }}
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{
+                opacity: [0, 0.5, 0],
+                scaleX: [0, 1, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                delay: i * 0.2,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+
+          {/* Vertical scanning lines */}
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={`vertical-${i}`}
+              className="absolute w-[2px] bg-gradient-to-b from-transparent via-blue-500 to-transparent"
+              style={{
+                left: `${(i * 100) / 10}%`,
+                top: '0',
+                bottom: '0',
+                height: '100%'
+              }}
+              initial={{ opacity: 0, scaleY: 0 }}
+              animate={{
+                opacity: [0, 0.3, 0],
+                scaleY: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.3,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+
+          {/* Glowing dots at grid intersections */}
+          {[...Array(30)].map((_, i) => (
+            <motion.div
+              key={`dot-${i}`}
+              className="absolute w-1 h-1 bg-purple-500 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Existing background elements */}
         <div className="absolute w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-3xl animate-pulse top-0 -left-64 mix-blend-screen"></div>
         <div className="absolute w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl animate-pulse bottom-0 right-0 mix-blend-screen"></div>
         <div className="absolute w-[300px] h-[300px] bg-pink-500/20 rounded-full blur-2xl animate-pulse top-1/2 left-1/2 mix-blend-screen"></div>
