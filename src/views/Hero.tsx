@@ -9,7 +9,7 @@ const Hero = () => {
   // Create parallax effect values
   const imageY = useTransform(scrollY, [0, 500], [0, -150]);
   const textY = useTransform(scrollY, [0, 500], [0, -50]);
-  const fadeOut = useTransform(scrollY, [0, 300], [1, 0]);
+  const fadeOut = useTransform(scrollY, [0, 1000], [1, 0]);
 
   useEffect(() => {
     setWindowSize({
@@ -202,7 +202,7 @@ const Hero = () => {
           {/* Hero Images - Now with parallax effect */}
           <div className="relative mt-10 md:mt-48 md:ml-32 mx-auto md:mx-0">
             <motion.div 
-              className="relative w-fit overflow-hidden group"
+              className="relative w-fit overflow-hidden group mb-2 md:mb-0"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -218,11 +218,30 @@ const Hero = () => {
                 className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"
               />
             </motion.div>
+            {/* Word Rotate for mobile */}
+            <div className="md:hidden mb-4 text-center">
+              <WordRotate
+                className="text-2xl sm:text-3xl font-semibold text-black dark:text-white whitespace-nowrap"
+                words={[
+                  "Hello I'm",
+                  "Hola, soy",
+                  "Bonjour, je suis",
+                  "Hallo, ich bin",
+                  "Ciao, sono",
+                  "Olá, eu sou",
+                  "你好, 我是",
+                  "こんにちは、私は",
+                  "안녕하세요, 저는",
+                  "Привет, я",
+                  "مرحبًا، أنا",
+                ]}
+              />
+            </div>
           </div>
         </div>
 
         <div className="sm:w-full w-fit mx-auto sm:mx-0 md:w-1/2">
-          <div className="ml-auto w-fit relative mt-8 md:mt-0">
+          <div className="ml-auto w-fit relative mt-4 md:mt-16">
             <motion.h1 
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -244,7 +263,7 @@ const Hero = () => {
                 }}
               />
             </motion.h1>
-            <div className="absolute -left-[42rem] top-1/4 -translate-y-1/2 z-20 hidden md:block">
+            <div className="absolute -left-[42rem] top-16 -translate-y-1/2 z-20 hidden md:block">
               <WordRotate
                 className="text-4xl font-semibold text-black dark:text-white sm:text-5xl md:text-7xl whitespace-nowrap"
                 words={[
@@ -311,7 +330,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-12 md:mt-24 mb-32 sm:mb-32 max-w-3xl text-gray-300 text-base md:text-lg leading-relaxed relative z-10 mx-auto text-center md:text-justify px-4 md:px-0"
+              className="mt-12 md:mt-16 mb-32 sm:mb-32 max-w-3xl text-gray-300 text-base md:text-lg leading-relaxed relative z-10 mx-auto text-center md:text-justify px-4 md:px-0"
               style={{ 
                 y: textY, 
                 opacity: useTransform(scrollY, 
