@@ -8,7 +8,7 @@ const Gallery = () => {
         title: "CICS Faculty C-DocS",
         description: "Course Document Submission System for Centralized Review and Approval Process of Course Plans, Weekly Class Expectations, Test Questionnaires, and Table of Specifications",
         technologies: ["Vite", "Firebase", "Vercel"],
-        liveUrl: "https://example.com",
+        liveUrl: "https://cics-cdocs.vercel.app/login",
         githubUrl: "https://github.com/keni-uyehara/Software-Engineering-2-CICS-Faculty-C-DocS-",
         image: "/projects/Tech/Cdocs.png"
       },
