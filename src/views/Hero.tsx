@@ -44,11 +44,11 @@ const Hero = () => {
   ];
 
   return (
-    <section className="w-full min-h-screen sm:px-10 px-5 py-10 relative font-secondary overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-transparent to-black z-10"></div>
+    <section className="w-full min-h-[150vh] sm:min-h-screen sm:px-10 px-5 py-10 relative font-secondary overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black z-10"></div>
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 h-full z-0">
         {/* Tech Grid Background */}
         <div className="absolute inset-0">
           {/* Base grid */}
@@ -168,7 +168,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="max-w-[1500px] mx-auto w-full flex md:flex-row flex-col relative z-10">
+      <div className="max-w-[1500px] mx-auto w-full flex md:flex-row flex-col relative z-10 h-full">
         <div className="w-full md:w-1/2 flex flex-col">
           <motion.ul 
             initial={{ opacity: 0, y: -20 }}
@@ -200,7 +200,7 @@ const Hero = () => {
           </motion.ul>
 
           {/* Hero Images - Now with parallax effect */}
-          <div className="relative mt-48 ml-32">
+          <div className="relative mt-10 md:mt-48 md:ml-32 mx-auto md:mx-0">
             <motion.div 
               className="relative w-fit overflow-hidden group"
               initial={{ opacity: 0, x: -50 }}
@@ -212,7 +212,7 @@ const Hero = () => {
               <img 
                 src="/Hero/Hero 1.png" 
                 alt="Hero Image 1" 
-                className="w-full max-w-md rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
+                className="w-full max-w-[280px] sm:max-w-md rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
               />
               <motion.div
                 className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"
@@ -222,12 +222,12 @@ const Hero = () => {
         </div>
 
         <div className="sm:w-full w-fit mx-auto sm:mx-0 md:w-1/2">
-          <div className="ml-auto w-fit relative mt-8">
+          <div className="ml-auto w-fit relative mt-8 md:mt-0">
             <motion.h1 
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="lg:text-9xl sm:text-7xl text-6xl font-semibold relative"
+              className="lg:text-9xl sm:text-7xl text-5xl font-semibold relative text-center md:text-left"
               style={{ y: textY, opacity: fadeOut }}
             >
               JAIKA
@@ -244,7 +244,7 @@ const Hero = () => {
                 }}
               />
             </motion.h1>
-            <div className="absolute -left-[42rem] top-1/4 -translate-y-1/2 z-20">
+            <div className="absolute -left-[42rem] top-1/4 -translate-y-1/2 z-20 hidden md:block">
               <WordRotate
                 className="text-4xl font-semibold text-black dark:text-white sm:text-5xl md:text-7xl whitespace-nowrap"
                 words={[
@@ -262,12 +262,12 @@ const Hero = () => {
                 ]}
               />
             </div>
-            <div className="flex">
+            <div className="flex flex-col md:flex-row items-center md:items-start">
               <motion.h1 
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="sm:text-7xl lg:text-9xl text-6xl font-semibold relative"
+                className="sm:text-7xl lg:text-9xl text-5xl font-semibold relative text-center md:text-left"
               >
                 SANGUAL
                 <motion.div 
@@ -287,7 +287,7 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="m-4 ml-6 relative group"
+                className="m-4 md:ml-6 relative group text-center md:text-left"
               >
                 <motion.div
                   className="relative z-10"
@@ -311,10 +311,16 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-24 max-w-3xl text-gray-300 text-lg leading-relaxed relative z-10 mx-auto text-justify"
-              style={{ y: textY, opacity: fadeOut }}
+              className="mt-12 md:mt-24 mb-32 sm:mb-32 max-w-3xl text-gray-300 text-base md:text-lg leading-relaxed relative z-10 mx-auto text-center md:text-justify px-4 md:px-0"
+              style={{ 
+                y: textY, 
+                opacity: useTransform(scrollY, 
+                  [0, 400, 800], // Much slower fade out for mobile
+                  [1, 1, 0]
+                ) 
+              }}
             >
-              <p>
+              <p className="mb-24 sm:mb-0"> {/* Adjusted bottom margin */}
                 I'm a BS Information Systems student specializing in Business Analytics at the University of Santo Tomas. As a passionate and versatile UI/UX Designer, Analyst, and Full-Stack Developer, I thrive in creating visually appealing, intuitive designs and developing user-centric web applications. Beyond coding and design, I also express my creativity through digital artworks, including pubmats, illustrations, and graphic design pieces—bringing both technical and artistic perspectives into every project I take on.
               </p>
             </motion.div>
@@ -324,10 +330,16 @@ const Hero = () => {
 
       {/* Scroll Down Indicator */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        className="fixed bottom-28 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
+        style={{
+          opacity: useTransform(scrollY,
+            [0, 400], // Slower fade out for scroll indicator
+            [1, 0]
+          )
+        }}
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
