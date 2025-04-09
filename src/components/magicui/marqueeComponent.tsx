@@ -1,5 +1,5 @@
 import React from "react";
-import Marquee from "./marquee";
+import Marquee from "react-fast-marquee";
 import { cn } from "@/lib/utils";
 
 interface ArtworkCardProps {
@@ -16,10 +16,6 @@ const MarqueeComponent: React.FC = () => {
     { id: 6, image: "/projects/Art/Art 6.png" },
     { id: 7, image: "/projects/Art/Art 7.png" },
   ];
-
-  // Split artworks into two rows for alternating directions
-  const firstRow = artworks.slice(0, 4);
-  const secondRow = artworks.slice(4);
 
   const ArtworkCard: React.FC<ArtworkCardProps> = ({ image }) => {
     return (
@@ -41,15 +37,10 @@ const MarqueeComponent: React.FC = () => {
   };
 
   return (
-    <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-8 overflow-hidden bg-background py-8">
-      <Marquee pauseOnHover>
-        {firstRow.map((artwork) => (
-          <ArtworkCard key={`first-${artwork.id}`} {...artwork} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover>
-        {secondRow.map((artwork) => (
-          <ArtworkCard key={`second-${artwork.id}`} {...artwork} />
+    <div className="relative z-10 flex h-full w-full flex-col items-center justify-center overflow-hidden bg-background py-8">
+      <Marquee pauseOnHover speed={40}>
+        {artworks.map((artwork) => (
+          <ArtworkCard key={artwork.id} {...artwork} />
         ))}
       </Marquee>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background to-transparent"></div>
