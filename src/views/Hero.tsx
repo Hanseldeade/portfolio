@@ -44,7 +44,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="w-full min-h-[150vh] sm:min-h-screen sm:px-10 px-5 py-10 relative font-secondary overflow-hidden">
+    <section className="w-full min-h-[150vh] sm:min-h-screen sm:px-10 px-3 py-6 sm:py-8 md:py-10 relative font-secondary overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black z-10"></div>
 
       {/* Animated background elements */}
@@ -59,7 +59,7 @@ const Hero = () => {
                 linear-gradient(to right, rgba(147, 51, 234, 0.1) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
               `,
-              backgroundSize: '40px 40px'
+              backgroundSize: 'clamp(15px, 3vw, 40px) clamp(15px, 3vw, 40px)'
             }}
           />
           
@@ -67,7 +67,7 @@ const Hero = () => {
           {[...Array(15)].map((_, i) => (
             <motion.div
               key={`horizontal-${i}`}
-              className="absolute h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent"
+              className="absolute h-[1px] sm:h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent"
               style={{
                 top: `${(i * 100) / 15}%`,
                 left: '0',
@@ -174,7 +174,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex gap-10 w-fit sm:mx-0 mx-auto mb-8"
+            className="flex gap-3 xs:gap-4 sm:gap-6 md:gap-10 w-fit sm:mx-0 mx-auto mb-4 sm:mb-6 md:mb-8 text-xs xs:text-sm sm:text-base"
           >
             {navList.map((items, index) => (
               <motion.a 
@@ -200,7 +200,7 @@ const Hero = () => {
           </motion.ul>
 
           {/* Hero Images - Now with parallax effect */}
-          <div className="relative mt-10 md:mt-48 md:ml-32 mx-auto md:mx-0">
+          <div className="relative mt-6 sm:mt-10 md:mt-48 md:ml-32 mx-auto md:mx-0">
             <motion.div 
               className="relative w-fit overflow-hidden group mb-2 md:mb-0"
               initial={{ opacity: 0, x: -50 }}
@@ -212,7 +212,7 @@ const Hero = () => {
               <img 
                 src="/Hero/Hero 1.png" 
                 alt="Hero Image 1" 
-                className="w-full max-w-[280px] sm:max-w-md rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
+                className="w-full max-w-[200px] xs:max-w-[240px] sm:max-w-[280px] md:max-w-md rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
               />
               <motion.div
                 className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"
@@ -221,7 +221,7 @@ const Hero = () => {
             {/* Word Rotate for mobile */}
             <div className="md:hidden mb-4 text-center">
               <WordRotate
-                className="text-2xl sm:text-3xl font-semibold text-black dark:text-white whitespace-nowrap"
+                className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-semibold text-black dark:text-white whitespace-nowrap"
                 words={[
                   "Hello I'm",
                   "Hola, soy",
@@ -246,7 +246,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="lg:text-9xl sm:text-7xl text-5xl font-semibold relative text-center md:text-left"
+              className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-semibold relative text-center md:text-left"
               style={{ y: textY, opacity: fadeOut }}
             >
               JAIKA
@@ -263,9 +263,9 @@ const Hero = () => {
                 }}
               />
             </motion.h1>
-            <div className="absolute -left-[42rem] top-16 -translate-y-1/2 z-20 hidden md:block">
+            <div className="absolute -left-[20rem] sm:-left-[30rem] md:-left-[42rem] top-16 -translate-y-1/2 z-20 hidden md:block">
               <WordRotate
-                className="text-4xl font-semibold text-black dark:text-white sm:text-5xl md:text-7xl whitespace-nowrap"
+                className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-semibold text-black dark:text-white whitespace-nowrap"
                 words={[
                   "Hello I'm",
                   "Hola, soy",
@@ -286,7 +286,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="sm:text-7xl lg:text-9xl text-5xl font-semibold relative text-center md:text-left"
+                className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-semibold relative text-center md:text-left"
               >
                 SANGUAL
                 <motion.div 
@@ -306,7 +306,7 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="m-4 md:ml-6 relative group text-center md:text-left"
+                className="m-2 sm:m-3 md:m-4 md:ml-6 relative group text-center md:text-left text-xs xs:text-sm sm:text-base"
               >
                 <motion.div
                   className="relative z-10"
@@ -330,16 +330,16 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-12 md:mt-16 mb-32 sm:mb-32 max-w-3xl text-gray-300 text-base md:text-lg leading-relaxed relative z-10 mx-auto text-center md:text-justify px-4 md:px-0"
+              className="mt-6 sm:mt-8 md:mt-12 lg:mt-16 mb-12 sm:mb-16 md:mb-24 lg:mb-32 max-w-3xl text-gray-300 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed relative z-10 mx-auto text-center md:text-justify px-3 sm:px-4 md:px-0"
               style={{ 
                 y: textY, 
                 opacity: useTransform(scrollY, 
-                  [0, 400, 800], // Much slower fade out for mobile
+                  [0, 400, 800],
                   [1, 1, 0]
                 ) 
               }}
             >
-              <p className="mb-24 sm:mb-0"> {/* Adjusted bottom margin */}
+              <p className="mb-12 sm:mb-16 md:mb-24 lg:mb-0">
                 I'm a BS Information Systems student specializing in Business Analytics at the University of Santo Tomas. As a passionate and versatile UI/UX Designer, Analyst, and Full-Stack Developer, I thrive in creating visually appealing, intuitive designs and developing user-centric web applications. Beyond coding and design, I also express my creativity through digital artworks, including pubmats, illustrations, and graphic design pieces—bringing both technical and artistic perspectives into every project I take on.
               </p>
             </motion.div>
@@ -349,13 +349,13 @@ const Hero = () => {
 
       {/* Scroll Down Indicator */}
       <motion.div 
-        className="fixed bottom-28 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        className="fixed bottom-16 xs:bottom-20 sm:bottom-24 md:bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
         style={{
           opacity: useTransform(scrollY,
-            [0, 400], // Slower fade out for scroll indicator
+            [0, 400],
             [1, 0]
           )
         }}
@@ -370,7 +370,7 @@ const Hero = () => {
           className="flex flex-col items-center"
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
         >
-          <span className="text-sm text-gray-400 mb-2">Scroll Down</span>
+          <span className="text-[10px] xs:text-xs sm:text-sm text-gray-400 mb-1 sm:mb-2">Scroll Down</span>
           <motion.div
             animate={{ 
               boxShadow: [
@@ -384,11 +384,11 @@ const Hero = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-purple-500"
+            className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border border-purple-500"
           >
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              className="h-5 w-5 text-purple-500"
+              className="h-3 w-3 xs:h-4 xs:w-4 sm:h-5 sm:w-5 text-purple-500"
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
